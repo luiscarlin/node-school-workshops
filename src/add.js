@@ -1,4 +1,6 @@
-function add (a, b) {
+
+let subtract = (a, b) => {
   return a + b
 }
-module.exports = add
+
+export default subtract
