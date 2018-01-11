@@ -47,3 +47,14 @@
 
 //     // Do not remove the line below
 //     module.exports = repeat
+
+function repeat (operation, num) {
+  operation()
+  if (num === 1) {
+    return
+  }
+  return repeat(operation, --num)
+}
+
+// Do not remove the line below
+module.exports = repeat
