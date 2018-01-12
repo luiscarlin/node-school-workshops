@@ -42,8 +42,8 @@
 
 // ## Boilerplate
 
-//     function getShortMessages(messages) {
-//       // SOLUTION GOES HERE
-//     }
+function getShortMessages (messages) {
+  return messages.map(obj => obj.message).filter(message => message.length < 50)
+}
 
-//     module.exports = getShortMessages
+module.exports = getShortMessages
