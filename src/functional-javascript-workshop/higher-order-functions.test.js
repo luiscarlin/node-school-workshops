@@ -6,4 +6,3 @@ it(subject, () => {
   subject(mockFunc, 3)
   expect(mockFunc.mock.calls).toHaveLength(3)
 })
-

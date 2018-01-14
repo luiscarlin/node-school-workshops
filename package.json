@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "test-watch": "npm test -- --watch"
+    "linter": "yarn eslint src",
+    "test": "yarn linter && jest",
+    "test-watch": "yarn test -- --watch"
   },
   "keywords": [],
   "author": "",
