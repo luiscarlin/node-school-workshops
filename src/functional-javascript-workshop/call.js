@@ -89,8 +89,8 @@
 
 // ## Boilerplate
 
-function duckCount () {
-  // SOLUTION GOES HERE
+function duckCount (...args) {
+  return args
 }
 
 module.exports = duckCount
