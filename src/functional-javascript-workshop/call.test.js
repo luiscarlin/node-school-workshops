@@ -6,7 +6,7 @@ describe(subject, () => {
     subject()
   })
 
-  xit('returns number of objects passed as arguments that contain "quack" property', () => {
+  it('returns number of objects passed as arguments that contain "quack" property', () => {
     let noDuck = Object.create({quack: true})
     let duck = {quack: true}
     let output = subject(duck, noDuck)
@@ -14,7 +14,7 @@ describe(subject, () => {
     expect(output).toBe(1)
   })
 
-  xit('returns 0 if none of the objects being passed as arguments contain a "quack" property', () => {
+  it('returns 0 if none of the objects being passed as arguments contain a "quack" property', () => {
     let noDuck = Object.create({quack: true})
     let noDuckEither = {someFunc: (a) => a, someProp: 5}
     let output = subject(noDuck, noDuckEither)

@@ -90,7 +90,10 @@
 // ## Boilerplate
 
 function duckCount (...args) {
-  return args
+  let input = args
+  let filtered = input.filter((obj) => Object.prototype.hasOwnProperty.call(obj, 'quack'))
+
+  return filtered.length
 }
 
 module.exports = duckCount
