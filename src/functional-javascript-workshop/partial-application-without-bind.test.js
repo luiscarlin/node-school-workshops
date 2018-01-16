@@ -13,4 +13,13 @@ describe(subject, () => {
     info('this is an info message')
     expect(console.log).toHaveBeenCalledWith('INFO:', 'this is an info message')
   })
+
+  it('prints message to console.log when passed as array', () => {
+    console.log = jest.fn()
+
+    let info = subject('INFO:')
+
+    info('this', 'is', 'another', 'message')
+    expect(console.log).toHaveBeenCalledWith('INFO:', 'this', 'is', 'another', 'message')
+  })
 })
