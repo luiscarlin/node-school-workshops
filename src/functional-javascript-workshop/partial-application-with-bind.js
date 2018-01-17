@@ -39,3 +39,8 @@ module.exports = function (namespace) {
   }
   return logger.bind(null, namespace)
 }
+
+// a better solution
+// module.exports = function (namespace) {
+//   return console.log.bind(console, namespace)
+// }
