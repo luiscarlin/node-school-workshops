@@ -1,6 +1,6 @@
 import subject from './partial-application-with-bind'
 
-describe(subject, () => {
+describe('partial-application-with-bind', () => {
   it('returns a new function when called', () => {
     expect(subject('INFO:')).not.toBeNull()
   })

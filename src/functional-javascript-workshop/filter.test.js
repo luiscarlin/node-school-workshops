@@ -1,6 +1,6 @@
 import subject from './filter'
 
-it(subject, () => {
+it('filter', () => {
   let mockObj = [
     {
       message: '123456789012345678901234567890123456789012345678901'

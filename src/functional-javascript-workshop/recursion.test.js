@@ -1,6 +1,6 @@
 import subject from './recursion'
 
-it(subject, () => {
+it('recursion', () => {
   let inputList = [
     'apple',
     'apple',

@@ -1,6 +1,6 @@
 import subject from './call'
 
-describe(subject, () => {
+describe('call', () => {
   it('takes a variable number of arguments without throwing error', () => {
     subject({boolean: true}, {hello: 'value'}, {num: 2}, {someprop: 'somevalue'}, {}, {})
     subject()

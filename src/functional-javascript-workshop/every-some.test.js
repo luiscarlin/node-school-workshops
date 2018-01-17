@@ -1,6 +1,6 @@
 import subject from './every-some'
 
-describe(subject, () => {
+describe('every-some', () => {
   let goodUsers
   let testAllValid
 

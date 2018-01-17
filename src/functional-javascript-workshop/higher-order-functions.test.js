@@ -1,6 +1,6 @@
 import subject from './higher-order-functions'
 
-it(subject, () => {
+it('higher-order-functions', () => {
   let mockFunc = jest.fn()
 
   subject(mockFunc, 3)

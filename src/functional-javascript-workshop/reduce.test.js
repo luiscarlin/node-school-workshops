@@ -1,6 +1,6 @@
 import subject from './reduce'
 
-it(subject, () => {
+it('reduce', () => {
   let input = [
     'hello',
     'bye',
