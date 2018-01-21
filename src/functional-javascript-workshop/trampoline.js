@@ -39,39 +39,44 @@
 //   * A trampoline continues to synchronously execute steps, getting new steps, until there are no more steps. You can use a loop here!
 //   * If your program takes a long time to run, something is probably wrong.  Use Control - C to kill the node process.
 
-// ## Boilerplate
+// ## Solution
 
-// repeat() will return a function object. That is the "next step".
-// trampoline() has a while loop
-// Look up how to use the 'typeof' operator
-// Function-ception. If it's not working logically, put it in another function object.
+/*
+  PROBLEM:
+  We want to use the recursive function "repeat", but it causes a stackoverflow for large numbers.
+
+  SOLUTION:
+  Pretty much, we are converting a recursive function into a regular function that performs an operation and returns the next
+  call of itself to perform. That way the stack doesn't blow up.
+  We use a trampoline function as a caller.
+*/
 
 function repeat (operation, num) {
-  // Modify this so it doesn't cause a stack overflow!
-  // return the 'next step' if there is one
-  // dont' use loops here
-  if (num <= 0) return
+  if (num <= 0) return null
 
+  // perform the operation
+  operation()
+
+  // return a function calling repeat with the next num
   return () => {
-    operation()
     return repeat(operation, --num)
   }
 }
 
 function trampoline (fn) {
-  // A trampoline continues to synchronously execute steps, getting new steps, until there are no more steps.
-  // You probably want to implement a trampoline!
-
+  let acc = 0
+  // while fn is still a function, execute it
   while (typeof (fn) === 'function') {
     fn = fn()
+    if (fn) acc += 1
   }
-  return fn
+  return acc
 }
 
 module.exports = function (operation, num, cb) {
-  // You probably want to call your trampoline here!
-  trampoline(() => {
-    repeat(operation, num)
+  // call trampoline to start the recursive function with first step
+  let timesExecuted = trampoline(() => {
+    return repeat(operation, num)
   })
-  if (cb) cb(num)
+  if (cb) cb(timesExecuted)
 }
