@@ -87,10 +87,26 @@
 //   * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice#Array-like
 //   * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions_and_function_scope/arguments
 
-// ## Boilerplate
+/*
+  SUMMARY:
+  - Duck typing = "if a bird acts as a duck, then it's a duck". Meaning, you can assume the type of an object by checking on its properties.
+  - myObject#hasOwnProperty("name_func_or_var") => true if myObject has prop "name_func_or_var" and it was not inherited from the prototype
+  - All objects have a prototype from where they inherit functions and properties (prototype is an object)
+    - 'let object = {}' inherits from the "Object.prototype" prototype
+    - 'let object = Object.create(MyCustomPrototype)' inherits from the "MyCustomPrototype" prototype
+  - Objects inherited from Object.prototype get function "hasOwnProperty()"
+  - Object.prototype.hasOwnProperty.call(object, 'name_of_func_or_propr') will always work
+*/
 
 function duckCount (...args) {
+  // args is an array
   let input = args
+
+  // let filteredArray = unfilteredArray.filter(testElement(elementInArray))
+  // will loop through the unfilterdArray and run function testElement() for each elementInArray.
+  // If the testElement() returns true, the element will be part of the Filtered Array.
+
+  // Save object in new array if object has own property 'quack' (not inherited from its prototype)
   let filtered = input.filter((obj) => Object.prototype.hasOwnProperty.call(obj, 'quack'))
 
   return filtered.length
