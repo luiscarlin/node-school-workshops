@@ -44,7 +44,6 @@
 function getDependencies (tree, arrayToReturn = []) {
   let dependenciesTree = tree.dependencies
   if (dependenciesTree) {
-    // grab children
     let children = Object.keys(dependenciesTree)
 
     children.forEach((libraryName) => {
@@ -52,18 +51,22 @@ function getDependencies (tree, arrayToReturn = []) {
       let dependencies = getDependencies(dependenciesTree[libraryName], arrayToReturn)
       arrayToReturn.concat(dependencies)
     })
-    return arrayToReturn.sort()
+    return [...new Set(arrayToReturn.sort())]
   } else {
     return []
-  } // children.forEach((possibleObject) => {
-  //   if (typeof tree[possibleObject] === 'object') {
-  //     if (possibleObject === 'dependencies') {
-  //       dependencyParent = true
-  //       dependencyArray.push(possibleOb)
-  //     }
-  //     console.log('object found', possibleObject)
-  //     return getDependencies(tree[possibleObject])
-  //   }
+  }
 }
+// function getDependencies (mod, result) {
+//   result = result || []
+//   var dependencies = mod && mod.dependencies || []
+//   Object.keys(dependencies).forEach(function (dep) {
+//     var key = dep + '@' + mod.dependencies[dep].version
+//     if (result.indexOf(key) === -1) result.push(key)
+//     getDependencies(mod.dependencies[dep], result)
+//   })
+//   return result.sort()
+// }
+
+// module.exports = getDependencies
 
 module.exports = getDependencies
