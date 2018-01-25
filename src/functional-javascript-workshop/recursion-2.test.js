@@ -19,13 +19,13 @@ describe('recursion 2', () => {
     }
   }
 
-  it.skip('should return a list', () => {
+  it('should return a list', () => {
     let output = subject(mockTree)
     expect(Array.isArray(output)).toBe(true)
   })
 
-  it.skip('should return a list of dependencies and subdependecies', () => {
+  it('should return a list of dependencies and subdependecies', () => {
     let output = subject(mockTree)
-    expect(Array.isArray(output)).toEqual(expect.arrayContaining([ 'inflection@1.2.6', 'optimist@0.3.7', 'wordwrap@0.0.2' ]))
+    expect(output).toEqual(['inflection@1.2.6', 'optimist@0.3.7', 'wordwrap@0.0.2'])
   })
 })
