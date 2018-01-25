@@ -41,8 +41,32 @@
 
 // ## Boilerplate
 
-function getDependencies (tree) {
-  return []
+function getDependencies (tree, dependencyArray = []) {
+  console.log('dependency array', dependencyArray)
+  console.log('tree', tree)
+
+  let dependenciesTree = tree.dependencies
+  if (dependenciesTree) {
+    // grab children
+    let children = Object.keys(dependenciesTree)
+    console.log('children', children)
+
+    children.forEach((libraryName) => {
+      // grab value
+      dependencyArray.push(libraryName + '@' + dependenciesTree[libraryName].version)
+      getDependencies(dependenciesTree[children], dependencyArray)
+    })
+  }
+  console.log('dependency array end', dependencyArray)
+  // children.forEach((possibleObject) => {
+  //   if (typeof tree[possibleObject] === 'object') {
+  //     if (possibleObject === 'dependencies') {
+  //       dependencyParent = true
+  //       dependencyArray.push(possibleOb)
+  //     }
+  //     console.log('object found', possibleObject)
+  //     return getDependencies(tree[possibleObject])
+  //   }
 }
 
 module.exports = getDependencies

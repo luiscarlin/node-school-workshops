@@ -19,7 +19,7 @@ describe('recursion 2', () => {
     }
   }
 
-  it('should return a list', () => {
+  it.skip('should return a list', () => {
     let output = subject(mockTree)
     expect(Array.isArray(output)).toBe(true)
   })
