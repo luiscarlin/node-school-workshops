@@ -39,34 +39,47 @@
 
 //   * Do not use any for/while loops.
 
-// ## Boilerplate
+// FIRST SOLUTION
+// function getDependencies (tree, arrayToReturn = []) {
+//   let dependenciesTree = tree.dependencies
+//   if (dependenciesTree) {
+//     let children = Object.keys(dependenciesTree)
 
-function getDependencies (tree, arrayToReturn = []) {
-  let dependenciesTree = tree.dependencies
-  if (dependenciesTree) {
-    let children = Object.keys(dependenciesTree)
-
-    children.forEach((libraryName) => {
-      arrayToReturn.push((libraryName + '@' + dependenciesTree[libraryName].version))
-      let dependencies = getDependencies(dependenciesTree[libraryName], arrayToReturn)
-      arrayToReturn.concat(dependencies)
-    })
-    return [...new Set(arrayToReturn.sort())]
-  } else {
-    return []
-  }
-}
-// function getDependencies (mod, result) {
-//   result = result || []
-//   var dependencies = mod && mod.dependencies || []
-//   Object.keys(dependencies).forEach(function (dep) {
-//     var key = dep + '@' + mod.dependencies[dep].version
-//     if (result.indexOf(key) === -1) result.push(key)
-//     getDependencies(mod.dependencies[dep], result)
-//   })
-//   return result.sort()
+//     children.forEach((libraryName) => {
+//       arrayToReturn.push((libraryName + '@' + dependenciesTree[libraryName].version))
+//       let dependencies = getDependencies(dependenciesTree[libraryName], arrayToReturn)
+//       arrayToReturn.concat(dependencies)
+//     })
+//     return [...new Set(arrayToReturn.sort())]
+//   } else {
+//     return []
+//   }
 // }
 
-// module.exports = getDependencies
+function getDependencies (tree, result) {
+  // if undefined, set it to empty []
+  // holds the final result. [ "name@version", "name1@version1" ]
+  result = result || []
+
+  // if tree exists, and tree.dependencies exists use dependencies otherwise use empty []
+  let dependencies = (tree && tree.dependencies) || []
+
+  // get all the dependencies names as an array
+  // for each of those names...
+  Object.keys(dependencies).forEach((dependencyName) => {
+    // form the entry for the dependency "name@version"
+    let dependencyEntry = dependencyName + '@' + tree.dependencies[dependencyName].version
+
+    // search for the dependency entry to see if it's already in the result list
+    // if not there, add it to the list
+    if (result.indexOf(dependencyEntry) === -1) result.push(dependencyEntry)
+
+    // call the function again with the subtree
+    getDependencies(tree.dependencies[dependencyName], result)
+  })
+
+  // sort before return it
+  return result.sort()
+}
 
 module.exports = getDependencies
