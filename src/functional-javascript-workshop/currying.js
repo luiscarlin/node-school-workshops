@@ -61,14 +61,22 @@
 //   * You can detect the number of expected arguments to a function (it's arity) by checking a function's .length property.
 
 function curryN (fn, n) {
+  // determine the number of arguments to curry
   let numArgsInFuncToCurry = n && (typeof n === 'number') ? n : fn.length
 
+  // prev is a list that accumulates the inputs for the fn
   let getCurry = (prev) => {
+    // return a new function that accepts 1 arg
     return (arg) => {
+      // once used, create a new list as prev + current args
+      // it's important to create this new list each time otherwise it's shared and can't reuse the function
       let argList = prev.concat(arg)
+
       if (argList.length >= numArgsInFuncToCurry) {
+        // got all the inputs we want, so invoke the function with the current list of inputs
         return fn.apply(this, argList)
       } else {
+        // we need more inputs, so call getCurry() to return the a new function with updated argslist
         return getCurry(argList)
       }
     }
@@ -77,13 +85,3 @@ function curryN (fn, n) {
 }
 
 module.exports = curryN
-
-// function curryN (fn, n) {
-//   n = n || fn.length
-//   return function curriedN (arg) {
-//     if (n <= 1) return fn(arg)
-//     return curryN(fn.bind(this, arg), n - 1)
-//   }
-// }
-
-// module.exports = curryN
