@@ -55,19 +55,19 @@
   fn("hello")               // outputs "hello"
   fn.call(this, "hello")    // outputs "hello"
 
-- "Function.prototype.call" is itself function (like fn) that you can call with ".call()", so...
+- "Function.prototype.call" is itself a function (like fn) that you can call with ".call()", so...
   Function.prototype.call.call(fn, this, "hello")    // outputs "hello"
 
 - Function.call === Function.prototype.call, so....
   Function.call.call(fn, this, "hello")              // still prints "hello"
 
-- In the inner working of the function "call", "this" is the function to call. So, overriding "this" will cause a different function to be called
-
-- Function.prototype.bind() is also available. It retuns a new function, where you can bind the context of another "this"
+- Function.prototype.bind() is also available. It retuns a new function, where you can override "this" in a function
 - since call(), apply(), and bind() are functions from Function.prototype, you can apply to them the functions call(), apply(), or bind()
 
-────────────────────────────────────────────────────────────────────────────────
+- In the inner workings of the function "call", "this" is the function to call.
+- So, overriding "this" in "call" will cause a different function to be called
 
+────────────────────────────────────────────────────────────────────────────────
 */
 
 // attach "slice" to "this" in the function "call" and return that new function
