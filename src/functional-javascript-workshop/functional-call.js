@@ -46,19 +46,32 @@
 //   * Do not use any for/while loops or Array#forEach.
 //   * Do not use the `function` keyword :D
 
-// ## Hints
+/*
 
-//   * This is absolutely a one liner.
-//   * Every JavaScript Function inherits methods such as call, apply and bind from the object `Function.prototype`.
-//   * Function#call executes the value of `this` when it is invoked.  Inside `someFunction.call()`, the value of `this` will be `someFunction`.
-//   * Function.call itself is a function thus it inherits from `Function.prototype`
+────────────────────────────────────────────────────────────────────────────────
 
-//     function myFunction() {
-//       console.log('called my function')
-//     }
+- every Function inherits methods from Function.prototype, such as (call, apply, bind, etc)
+  let fn = (input) => { console.log(input) }
+  fn("hello")               // outputs "hello"
+  fn.call(this, "hello")    // outputs "hello"
 
-//     Function.prototype.call.call(myFunction) // => "called my function"
+- "Function.prototype.call" is itself function (like fn) that you can call with ".call()", so...
+  Function.prototype.call.call(fn, this, "hello")    // outputs "hello"
 
-// ## Boilerplate
+- Function.call === Function.prototype.call, so....
+  Function.call.call(fn, this, "hello")              // still prints "hello"
 
-module.exports = Function.call.bind(Array.prototype.slice)
+- In the inner working of the function "call", "this" is the function to call. So, overriding "this" will cause a different function to be called
+
+- Function.prototype.bind() is also available. It retuns a new function, where you can bind the context of another "this"
+- since call(), apply(), and bind() are functions from Function.prototype, you can apply to them the functions call(), apply(), or bind()
+
+────────────────────────────────────────────────────────────────────────────────
+
+*/
+
+// attach "slice" to "this" in the function "call" and return that new function
+// since we know that the function "call" stores the function to call in its "this", then
+// anytime somebody calls this function will be executing "slice"
+
+module.exports = Function.prototype.call.bind(Array.prototype.slice)
