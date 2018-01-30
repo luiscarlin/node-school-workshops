@@ -70,17 +70,14 @@
 // Then, print the contents of the promise after it has been fulfilled by passing
 // console.log to then.
 
-// ## Boilerplate
+var promise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve('FULFILLED!')
+  }, 300)
+})
 
-//     'use strict';
+promise.then((success) => {
+  console.log(success)
+})
 
-//     var promise = new Promise(function (fulfill, reject) {
-//       // Your solution here
-//     });
-
-//     // Your solution here
-
-//  » To print these instructions again, run: promise-it-wont-hurt print
-//  » To execute your program in a test environment, run: promise-it-wont-hurt run program.js
-//  » To verify your program, run: promise-it-wont-hurt verify program.js
-//  » For help run: promise-it-wont-hurt help
+module.exports = promise
