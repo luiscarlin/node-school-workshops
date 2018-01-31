@@ -28,7 +28,7 @@ describe('fulfill a promise', () => {
   })
 
   describe.skip('caller', () => {
-    it('should print message to the console', () => {
+    it('should print resolved message to the console', () => {
       jest.spyOn(console, 'log')
 
       require('./fulfill-a-promise')

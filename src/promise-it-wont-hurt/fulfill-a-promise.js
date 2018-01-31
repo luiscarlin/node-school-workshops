@@ -71,11 +71,13 @@
 // console.log to then.
 
 var promise = new Promise((resolve, reject) => {
+  // wait 300 ms and then resolve the promise with "FULFILLED"
   setTimeout(() => {
     resolve('FULFILLED!')
   }, 300)
 })
 
+// prints success message
 promise.then((success) => {
   console.log(success)
 })
