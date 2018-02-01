@@ -26,13 +26,4 @@ describe('fulfill a promise', () => {
       })
     })
   })
-
-  describe.skip('caller', () => {
-    it('should print resolved message to the console', () => {
-      jest.spyOn(console, 'log')
-
-      require('./fulfill-a-promise')
-      expect(console.log).toHaveBeenCalledWith('FULFILLED!')
-    })
-  })
 })
