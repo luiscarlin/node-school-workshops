@@ -5,12 +5,9 @@ describe('fulfill a promise', () => {
         jest.useFakeTimers()
       })
 
-      afterAll(() => {
-        jest.runAllTimers()
-      })
-
       it('should have a timeout of 300ms', () => {
         require('./fulfill-a-promise')
+        jest.runAllTimers()
         expect(setTimeout).toHaveBeenCalledTimes(1)
         expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 300)
       })

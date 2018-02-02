@@ -51,6 +51,6 @@ let promiseUser = () => {
   getPromise().then(() => {}, onRejectHandler)
 }
 
-promiseUser()
+// promiseUser()
 
 export { getPromise, onRejectHandler, promiseUser }
