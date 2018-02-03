@@ -1,4 +1,4 @@
-import { getPromise, onRejectHandler } from './reject-a-promise'
+import { getPromise, onRejectHandler, promiseUser } from './reject-a-promise'
 
 describe('reject a promise', () => {
   jest.useFakeTimers()
@@ -29,19 +29,21 @@ describe('reject a promise', () => {
     })
   })
 
-  describe.skip('promiseUser', () => {
-    it('should get a new promise', () => {
-      // jest.mock('./reject-a-promise')
-      // let getPromise = require('./reject-a-promise').getPromise
-      // getPromise.mockImplementationOnce(() => Promise.reject(new Error('REJECTED!')))
+  describe('promiseUser', () => {
+    let mockGetPromise, mockOnRejectHandler
 
-      // return onRejectHandler()
-      //   .catch(error => {
-      //     expect(error).toBe(expectedError)
-      //   })
+    beforeEach(() => {
+      mockGetPromise = jest.fn(() => Promise.reject(new Error('some error')))
+      mockOnRejectHandler = jest.fn(() => {})
+      promiseUser(mockGetPromise, mockOnRejectHandler)
     })
-    it('use the rejection handler', () => {
 
+    it('should get a new promise', () => {
+      expect(mockGetPromise).toHaveBeenCalled()
+    })
+
+    it('should use the on reject handler on rejection', () => {
+      expect(mockOnRejectHandler).toHaveBeenCalledWith(new Error('some error'))
     })
   })
 })

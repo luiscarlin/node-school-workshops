@@ -47,10 +47,10 @@ let onRejectHandler = (error) => {
   console.log(error.message)
 }
 
-let promiseUser = () => {
+let promiseUser = (getPromise, onRejectHandler) => {
   getPromise().then(() => {}, onRejectHandler)
 }
 
-// promiseUser()
+promiseUser(getPromise, onRejectHandler)
 
 export { getPromise, onRejectHandler, promiseUser }

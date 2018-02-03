@@ -79,7 +79,7 @@ var promise = new Promise((resolve, reject) => {
 
 // prints success message
 promise.then((success) => {
-  // console.log(success)
+  console.log(success)
 })
 
 module.exports = promise
