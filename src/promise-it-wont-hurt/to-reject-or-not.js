@@ -25,12 +25,12 @@
 //      * earth?). It is conventional to return the first invocation of callback
 //      * but it’s easy to overlook!
 //      */
-    
+
 //     function myFunc(user, callback) {
 //       if (user) {
 //         callback(null, user);
 //       }
-    
+
 //       return callback('No user was found', null);
 //     }
 
@@ -59,9 +59,7 @@
 // Note that unlike the prior exercises, you do not have to use setTimeout with
 // this.
 
-
 //  » To print these instructions again, run: promise-it-wont-hurt print
 //  » To execute your program in a test environment, run: promise-it-wont-hurt run program.js
 //  » To verify your program, run: promise-it-wont-hurt verify program.js
 //  » For help run: promise-it-wont-hurt help
-
