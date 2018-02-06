@@ -1,6 +1,6 @@
 import { runCaughtRejection, runCaughtError, runCaughtRejectBeforeError, runCaughtErrorBeforeRejection } from './shortcuts'
 
-describe.skip('shortcuts', () => {
+describe('shortcuts', () => {
   beforeEach(() => {
     console.log = jest.fn()
   })

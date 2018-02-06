@@ -73,32 +73,32 @@ let getPromiseThrowingError = () => {
 }
 
 let errorHandler = (error) => {
-  console.log('Caught rejection with .catch', error.message)
+  console.log(error.message)
 }
 
 let runCaughtRejection = () => {
-  getPromiseResolve()
-    .then(getPromiseReject())
+  return getPromiseResolve()
+    .then(getPromiseReject)
     .catch(errorHandler)
 }
 
 let runCaughtError = () => {
-  getPromiseResolve()
-    .then(getPromiseThrowingError())
+  return getPromiseResolve()
+    .then(getPromiseThrowingError)
     .catch(errorHandler)
 }
 
 let runCaughtRejectBeforeError = () => {
-  getPromiseResolve()
-    .then(getPromiseReject())
-    .then(getPromiseThrowingError())
+  return getPromiseResolve()
+    .then(getPromiseReject)
+    .then(getPromiseThrowingError)
     .catch(errorHandler)
 }
 
 let runCaughtErrorBeforeRejection = () => {
-  getPromiseResolve()
-    .then(getPromiseThrowingError())
-    .then(getPromiseReject())
+  return getPromiseResolve()
+    .then(getPromiseThrowingError)
+    .then(getPromiseReject)
     .catch(errorHandler)
 }
 
