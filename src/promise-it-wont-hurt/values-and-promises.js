@@ -45,7 +45,16 @@
 // If your program runs successfully, it should print out “DR. MANHATTAN” which
 // is extremely exciting.
 
-//  » To print these instructions again, run: promise-it-wont-hurt print
-//  » To execute your program in a test environment, run: promise-it-wont-hurt run program.js
-//  » To verify your program, run: promise-it-wont-hurt verify program.js
-//  » For help run: promise-it-wont-hurt help
+let attachTitle = (firstargument) => {
+  return `DR. ${firstargument}`
+}
+
+let getFulfilledPromise = () => Promise.resolve('MANHATTAN')
+
+let run = async () => {
+  await getFulfilledPromise().then(attachTitle).then(console.log)
+}
+
+run()
+
+export default run
