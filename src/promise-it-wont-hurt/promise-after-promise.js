@@ -95,7 +95,5 @@
 
 // Finally, print the fulfilled value of that new promise with console.log.
 
-//  » To print these instructions again, run: promise-it-wont-hurt print
-//  » To execute your program in a test environment, run: promise-it-wont-hurt run program.js
-//  » To verify your program, run: promise-it-wont-hurt verify program.js
-//  » For help run: promise-it-wont-hurt help
+// eslint-disable-next-line
+first().then(second).then(console.log)
