@@ -59,3 +59,5 @@ let run = (raw) => {
 }
 
 run(process.argv[2])
+
+export default run
