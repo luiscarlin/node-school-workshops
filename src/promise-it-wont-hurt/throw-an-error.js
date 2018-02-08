@@ -52,12 +52,12 @@ let onReject = (error) => {
   console.log(error.message)
 }
 
-let run = (raw) => {
-  parsePromised(raw)
+let run = async (raw) => {
+  await parsePromised(raw)
     .then(console.log)
     .then(null, onReject)
 }
 
-run(process.argv[2])
+// run(process.argv[2])
 
 export default run

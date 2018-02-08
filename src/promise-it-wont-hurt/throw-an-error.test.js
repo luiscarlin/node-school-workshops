@@ -7,7 +7,7 @@ describe('throw an error', () => {
 
   it('should print error message to console when failed to parse Json', async () => {
     await run(badJsonString)
-    expect(console.log).toHaveBeenCalledWith('Unexpected number in JSON at position 1')
+    expect(console.log).toHaveBeenCalledWith('Unexpected token } in JSON at position 9')
   })
 
   it('should print parsed json when good json is input', async () => {
