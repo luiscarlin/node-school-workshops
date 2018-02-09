@@ -81,7 +81,37 @@
 // Your program will now throw an exception in the global context!  Ahh!
 // Try to fix this using the approach described above.
 
-//  » To print these instructions again, run: promise-it-wont-hurt print
-//  » To execute your program in a test environment, run: promise-it-wont-hurt run program.js
-//  » To verify your program, run: promise-it-wont-hurt verify program.js
-//  » For help run: promise-it-wont-hurt help
+/*
+Notes:
+  - rejection will catch a previously thrown error
+  - catch(rejectionHandler) === then(null, rejectionHandler)
+  - if your error handler fails, the global context will catch it.
+*/
+
+let alwaysThrows = () => {
+  throw new Error('OH NOES')
+}
+
+let iterate = (number) => {
+  console.log(number)
+  return ++number
+}
+
+let run = async () => {
+  await Promise.resolve(iterate(1))
+    .then(iterate)
+    .then(iterate)
+    .then(iterate)
+    .then(iterate)
+    .then(alwaysThrows)
+    .then(iterate)
+    .then(iterate)
+    .then(iterate)
+    .then(iterate)
+    .then(iterate)
+    .then(null, (error) => console.log(error.message)) // === .catch((error) => console.log(error.message))
+}
+
+run()
+
+export default run
