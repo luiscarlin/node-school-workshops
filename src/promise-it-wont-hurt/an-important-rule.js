@@ -94,7 +94,8 @@ let alwaysThrows = () => {
 
 let iterate = (number) => {
   console.log(number)
-  return ++number
+  number += 1
+  return number
 }
 
 let run = async () => {
@@ -112,6 +113,4 @@ let run = async () => {
     .then(null, (error) => console.log(error.message)) // === .catch((error) => console.log(error.message))
 }
 
-run()
-
-export default run
+export { run }
