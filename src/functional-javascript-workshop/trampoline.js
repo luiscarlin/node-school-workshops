@@ -49,6 +49,7 @@
   Pretty much, we are converting a recursive function into a regular function that performs an operation and returns the next
   call of itself to perform. That way the stack doesn't blow up.
   We use a trampoline function as a caller.
+  Note that a while loop could gave also fixed the stack overflow issue.
 */
 
 function repeat (operation, num) {
