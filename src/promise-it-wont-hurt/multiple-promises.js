@@ -47,6 +47,9 @@
 //   })
 // }
 
+let all = (promiseOne, promiseTwo) => {}
+
+all()
 // Create an internal promise in whatever way you see fit.
 
 // Create a counter variable with initial value of 0.
