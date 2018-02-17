@@ -37,17 +37,29 @@
 
 // let someFunc = (firstPromise, secondPromise) => {
 //   let counter = 0
-//   let newPromise = new Promise((resolve, reject) => {
-//     firstPromise.then(() => ++counter)
-//     secondPromise.then(() => ++counter)
+// let newPromise = new Promise((resolve, reject) => {
+//   firstPromise.then(() => ++counter)
+//   secondPromise.then(() => ++counter)
 
-//     if (counter == 2) {
-//       resolve
-//     }
-//   })
+//   if (counter == 2) {
+//     resolve
+//   }
+// })
 // }
 
-let all = (promiseOne, promiseTwo) => {}
+let all = (promiseOne, promiseTwo) => {
+  let counter = 0
+  let newPromise = new Promise((resolve, reject) => {
+    promiseOne.then(() => ++counter)
+    promiseTwo.then(() => ++counter)
+
+    if (counter === 2) {
+      resolve(counter)
+    }
+  })
+
+  return newPromise
+}
 
 all()
 // Create an internal promise in whatever way you see fit.
