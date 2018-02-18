@@ -47,21 +47,6 @@
 // })
 // }
 
-let all = (promiseOne, promiseTwo) => {
-  let counter = 0
-  let newPromise = new Promise((resolve, reject) => {
-    promiseOne.then(() => ++counter)
-    promiseTwo.then(() => ++counter)
-
-    if (counter === 2) {
-      resolve(counter)
-    }
-  })
-
-  return newPromise
-}
-
-all()
 // Create an internal promise in whatever way you see fit.
 
 // Create a counter variable with initial value of 0.
@@ -96,3 +81,29 @@ all()
 //       .then(onFulfilled, onRejected);
 
 // In this lesson though, rest assured that that Promise.all is disabled 😈
+
+let all = (promiseOne, promiseTwo) => {
+  let newPromise = new Promise((resolve, reject) => {
+    let output = []
+    promiseOne.then((val) => {
+      output.push(val)
+
+      if (output.length === 2) {
+        resolve(output)
+      }
+    })
+
+    promiseTwo.then((val) => {
+      output.push(val)
+
+      if (output.length === 2) {
+        resolve(output)
+      }
+    })
+  })
+
+  return newPromise
+}
+
+// eslint-disable-next-line
+all(getPromise1(), getPromise2()).then(console.log)
