@@ -106,4 +106,9 @@ let all = (promiseOne, promiseTwo) => {
 }
 
 // eslint-disable-next-line
-all(getPromise1(), getPromise2()).then(console.log)
+//all(getPromise1(), getPromise2()).then(console.log)
+
+let run = async (promise1, promise2) => {
+  await all(promise1, promise2).then(console.log)
+}
+export default run
