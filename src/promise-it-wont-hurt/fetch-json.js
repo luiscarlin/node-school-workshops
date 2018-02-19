@@ -37,7 +37,11 @@
 
 //   [https://github.com/kriskowal/q-io](https://github.com/kriskowal/q-io)
 
-//  » To print these instructions again, run: promise-it-wont-hurt print
-//  » To execute your program in a test environment, run: promise-it-wont-hurt run program.js
-//  » To verify your program, run: promise-it-wont-hurt verify program.js
-//  » For help run: promise-it-wont-hurt help
+var HTTP = require('q-io/http')
+
+HTTP.read('http://localhost:1337')
+  .then((jsonOut) => {
+    console.log(JSON.parse(jsonOut))
+  })
+  .then(null, console.error)
+  .done()

@@ -23,7 +23,9 @@
     }
   },
   "babel": {
-    "presets": ["env"]
+    "presets": [
+      "env"
+    ]
   },
   "devDependencies": {
     "babel-jest": "^22.0.6",
@@ -35,6 +37,7 @@
     "eslint-plugin-node": "^5.2.1",
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
-    "jest": "^22.0.5"
+    "jest": "^22.0.5",
+    "q-io": "^1.13.5"
   }
 }
