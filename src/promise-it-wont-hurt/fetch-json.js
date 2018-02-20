@@ -37,11 +37,14 @@
 
 //   [https://github.com/kriskowal/q-io](https://github.com/kriskowal/q-io)
 
-var HTTP = require('q-io/http')
+let HTTP = require('q-io/http')
 
-HTTP.read('http://localhost:1337')
-  .then((jsonOut) => {
-    console.log(JSON.parse(jsonOut))
-  })
-  .then(null, console.error)
-  .done()
+let run = () => {
+  HTTP.read('http://localhost:1337')
+    .then((jsonOut) => {
+      console.log(JSON.parse(jsonOut))
+    })
+    .then(null, console.error)
+}
+
+export default run
