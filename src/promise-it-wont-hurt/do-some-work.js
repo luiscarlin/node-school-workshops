@@ -25,3 +25,10 @@
 //   * Send an HTTP GET request to the session cache on port 7000.  A stringwill be returned to you representing a user ID.
 //   * Grab that ID from the session response and send an HTTP GET request toyour database on port 7001 to the url `localhost:7001/<id>`.
 //   * If successfully done, your database will return a user object.`console.log` it to win many nerd-points.
+
+let HTTP = require('q-io/http')
+
+HTTP.read('http://localhost:7000')
+  .then((id) => HTTP.read('http://localhost:7001/' + id))
+  .then((json) => console.log(JSON.parse(json)))
+  .then(null, console.error)
