@@ -1,6 +1,6 @@
 # Node School Workshops [![CircleCI](https://circleci.com/gh/luiscarlin/node-school-workshops/tree/master.svg?style=svg)](https://circleci.com/gh/luiscarlin/node-school-workshops/tree/master)
 
-My solutions to [Node School](https://nodeschool.io) workshops using TDD
+My solutions to [Node School](https://nodeschool.io) workshops using TDD with [Jest](https://facebook.github.io/jest/)
 
 ## Completed Workshops
 
