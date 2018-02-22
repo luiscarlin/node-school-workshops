@@ -2,12 +2,21 @@
 
 My solutions to [Node School](https://nodeschool.io) workshops using TDD
 
-## Run Tests
-```
+## Completed Workshops
+
+* [Functional Javascript Workshop](https://github.com/timoxley/functional-javascript-workshop)
+* [Promise It Won't Hurt](https://github.com/stevekane/promise-it-wont-hurt)
+
+## Run
+
+```bash
 git clone this-repo
 cd this-repo
 yarn install
 
 # run linter and all tests
-yarn test 
+yarn test
+
+# run test-watch
+yarn test-watch
 ```
