@@ -40,3 +40,12 @@
 //  » To execute your program in a test environment, run: expressworks run program.js
 //  » To verify your program, run: expressworks verify program.js
 //  » For help run: expressworks help
+
+let express = require('express')
+let app = express()
+
+app.get('/home', (req, res) => {
+  res.end('Hello World!')
+})
+
+app.listen(process.argv[2])
