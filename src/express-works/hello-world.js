@@ -48,4 +48,8 @@ app.get('/home', (req, res) => {
   res.end('Hello World!')
 })
 
-app.listen(process.argv[2])
+// app.listen(process.argv[2], () => {
+//   console.log(`Server running in port ${process.argv[2]}`)
+// })
+
+export default app
