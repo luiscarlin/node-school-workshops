@@ -39,5 +39,8 @@
     "eslint-plugin-standard": "^3.0.1",
     "jest": "^22.0.5",
     "q-io": "^1.13.5"
+  },
+  "dependencies": {
+    "express": "^4.16.3"
   }
 }
