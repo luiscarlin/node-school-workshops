@@ -41,3 +41,15 @@
 //  » To execute your program in a test environment, run: expressworks run program.js
 //  » To verify your program, run: expressworks verify program.js
 //  » For help run: expressworks help
+
+const express = require('express')
+const path = require('path')
+const app = express()
+
+const pathToHtmlFile = process.argv[3] || path.join(__dirname, 'public')
+app.use(express.static(pathToHtmlFile))
+
+const port = process.argv[2]
+app.listen(port, () => {
+  console.log(`Server running in port ${port}`)
+})
