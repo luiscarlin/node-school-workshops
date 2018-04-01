@@ -80,8 +80,10 @@ app.get('/home', (req, res) => {
   })
 })
 
-if (process.argv[2]) {
+if (process.argv[2] && typeof process.argv[2] === 'number') {
   app.listen(process.argv[2], () => {
     console.log('server listening on port ', process.argv[2])
   })
 }
+
+export default app
