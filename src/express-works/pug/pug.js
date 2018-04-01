@@ -60,3 +60,20 @@
 //  » To execute your program in a test environment, run: expressworks run program.js
 //  » To verify your program, run: expressworks verify program.js
 //  » For help run: expressworks help
+
+const path = require('path')
+const express = require('express')
+const app = express()
+
+app.set('view engine', 'pug')
+app.set('views', path.join(__dirname, 'templates'))
+
+app.get('/home', (req, res) => {
+  res.render('index', {date: new Date().toDateString()})
+})
+
+if (process.argv[2]) {
+  app.listen(process.argv[2], () => {
+    console.log('server listening on port ', process.argv[2])
+  })
+}
