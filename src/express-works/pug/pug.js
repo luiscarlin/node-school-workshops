@@ -65,11 +65,19 @@ const path = require('path')
 const express = require('express')
 const app = express()
 
+// setup
+
+// tells express that we will use pug as the templating engine
 app.set('view engine', 'pug')
+
+// specify the path to the template folder
 app.set('views', path.join(__dirname, 'templates'))
 
+// get /home will respond with template "index.pug" populated with data passed
 app.get('/home', (req, res) => {
-  res.render('index', {date: new Date().toDateString()})
+  res.render('index', {
+    date: new Date().toDateString()
+  })
 })
 
 if (process.argv[2]) {
