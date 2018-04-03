@@ -66,3 +66,16 @@
 //  » To execute your program in a test environment, run: expressworks run program.js
 //  » To verify your program, run: expressworks verify program.js
 //  » For help run: expressworks help
+
+let express = require('express')
+let app = express()
+
+app.post('/form', (req, res) => {
+  res.end('Hello World!')
+})
+
+// app.listen(process.argv[2], () => {
+//   console.log(`Server running in port ${process.argv[2]}`)
+// })
+
+export default app
