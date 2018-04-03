@@ -68,14 +68,20 @@
 //  » For help run: expressworks help
 
 let express = require('express')
+let bodyparser = require('body-parser')
 let app = express()
 
+app.use(bodyparser.urlencoded({extended: false}))
+
 app.post('/form', (req, res) => {
-  res.end('Hello World!')
+  let backwards = req.body.str.split('').reverse().join('')
+  res.send(backwards)
 })
 
-// app.listen(process.argv[2], () => {
-//   console.log(`Server running in port ${process.argv[2]}`)
-// })
+// if (process.argv[2] && typeof process.argv[2] === 'number') {
+app.listen(process.argv[2], () => {
+  console.log('server listening on port ', process.argv[2])
+})
+// }
 
-export default app
+// export default app
