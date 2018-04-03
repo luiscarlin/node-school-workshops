@@ -21,6 +21,6 @@ yarn install
 # run linter and all tests
 yarn test
 
-# run test-watch
+# run test watch
 yarn test-watch
 ```
