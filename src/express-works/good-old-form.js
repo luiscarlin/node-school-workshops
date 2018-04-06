@@ -74,14 +74,15 @@ let app = express()
 app.use(bodyparser.urlencoded({extended: false}))
 
 app.post('/form', (req, res) => {
+  console.log('request', req.body)
   let backwards = req.body.str.split('').reverse().join('')
   res.send(backwards)
 })
 
 // if (process.argv[2] && typeof process.argv[2] === 'number') {
-app.listen(process.argv[2], () => {
-  console.log('server listening on port ', process.argv[2])
-})
+//   app.listen(process.argv[2], () => {
+//     console.log('server listening on port ', process.argv[2])
+//   })
 // }
 
-// export default app
+export default app
