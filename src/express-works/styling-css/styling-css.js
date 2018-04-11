@@ -63,3 +63,17 @@
 //  » To execute your program in a test environment, run: expressworks run program.js
 //  » To verify your program, run: expressworks verify program.js
 //  » For help run: expressworks help
+
+const express = require('express')
+const path = require('path')
+const app = express()
+
+const publicFolder = path.join(__dirname, 'public')
+
+app.use(require('stylus').middleware(publicFolder))
+app.use(express.static(publicFolder))
+
+const port = process.argv[2]
+app.listen(port, () => {
+  console.log(`Server running in port ${port}`)
+})
